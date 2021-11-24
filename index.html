@@ -1,0 +1,55 @@
+<!Doctype html>
+<html>
+    <head>
+        <style>
+            div {
+                color: white;
+            }
+            .flex-container-row {
+                display: flex;
+                flex-direction: row;
+            }
+            .flex-container-col {
+                display: flex;
+                flex-direction: column;
+            }
+            .bg-red {
+                background-color: rgb(109, 18, 18);
+            }
+            .box-item {
+                margin: 5px 5px;
+                min-height: 100px;
+                min-width: 100px;
+            }
+            .box-item-100 {
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Flex container sample with horizontal direction</h1>
+        <div class="flex-container-row">
+            <div class="box-item box-item-100 bg-red">1</div>
+            <div class="box-item box-item-100 bg-red">2</div>
+            <div class="box-item box-item-100 bg-red">3</div>
+            <div class="box-item box-item-100 bg-red">4</div>
+            <div class="box-item box-item-100 bg-red">5</div>
+        </div>
+        <h1>Flex container sample with vertiacl direction</h1>
+        <div class="flex-container-column">
+            <div class="box-item box-item-100 bg-red">1</div>
+            <div class="box-item box-item-100 bg-red">2</div>
+            <div class="box-item box-item-100 bg-red">3</div>
+            <div class="box-item box-item-100 bg-red">4</div>
+            <div class="box-item box-item-100 bg-red">5</div>
+        </div>
+        <div class="flex-container-column">
+            <div class="box-item bg-red">1</div>
+            <div class="box-item bg-red">2</div>
+            <div class="box-item bg-red">3</div>
+            <div class="box-item bg-red">4</div>
+            <div class="box-item bg-red">5</div>
+        </div>
+    </body>
+</html>
