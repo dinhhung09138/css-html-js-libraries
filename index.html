@@ -1,55 +1,176 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            div {
-                color: white;
-            }
-            .flex-container-row {
-                display: flex;
-                flex-direction: row;
-            }
-            .flex-container-col {
-                display: flex;
-                flex-direction: column;
-            }
-            .bg-red {
-                background-color: rgb(109, 18, 18);
-            }
-            .box-item {
-                margin: 5px 5px;
-                min-height: 100px;
-                min-width: 100px;
-            }
-            .box-item-100 {
-                width: 200px;
-                height: 200px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Flex container sample with horizontal direction</h1>
-        <div class="flex-container-row">
-            <div class="box-item box-item-100 bg-red">1</div>
-            <div class="box-item box-item-100 bg-red">2</div>
-            <div class="box-item box-item-100 bg-red">3</div>
-            <div class="box-item box-item-100 bg-red">4</div>
-            <div class="box-item box-item-100 bg-red">5</div>
-        </div>
-        <h1>Flex container sample with vertiacl direction</h1>
-        <div class="flex-container-column">
-            <div class="box-item box-item-100 bg-red">1</div>
-            <div class="box-item box-item-100 bg-red">2</div>
-            <div class="box-item box-item-100 bg-red">3</div>
-            <div class="box-item box-item-100 bg-red">4</div>
-            <div class="box-item box-item-100 bg-red">5</div>
-        </div>
-        <div class="flex-container-column">
-            <div class="box-item bg-red">1</div>
-            <div class="box-item bg-red">2</div>
-            <div class="box-item bg-red">3</div>
-            <div class="box-item bg-red">4</div>
-            <div class="box-item bg-red">5</div>
-        </div>
-    </body>
+  <head>
+    <style>
+      div {
+        color: white;
+      }
+      .flex-container-row {
+        display: flex;
+        flex-direction: row;
+        /*This property to set the align of the items in the same line*/
+        align-items: center;
+      }
+      .flex-align-content-center {
+          background-color: khaki;
+          min-height: 800px;
+        /*This property to set the align of the item inside the container in multiple line*/
+        align-content: center;
+      }
+      .flex-container-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .flex-wrapping {
+        flex-wrap: wrap;
+      }
+      .flex-grow-2 {
+          /* To set more spaces for flex items
+             Default flex grow set to 1, If you want to change, use this line
+          */
+          flex-grow: 2;
+      }
+      .flex-grow-3 {
+          flex-grow: 3;
+      }
+      .flex-shrink-2 {
+          /* To set less spaces for flex items
+           * 
+           * 
+          */
+          flex-shrink: 4;
+      }
+      .flex-wrapping:nth-child(1) {
+          order: 15;
+      }
+      .flex-axis-space-around {
+        justify-content: space-around;
+      }
+      .flex-axis-end {
+        justify-content: flex-end;
+      }
+      .flex-axis-center {
+        justify-content: center;
+      }
+      .flex-axis-space-between {
+        justify-content: space-between;
+      }
+      .bg-red {
+        background-color: rgb(109, 18, 18);
+      }
+      .box-item {
+        margin: 5px 5px;
+        min-height: 100px;
+        min-width: 100px;
+      }
+      .box-item-100 {
+        width: 200px;
+        height: 200px;
+      }
+
+      .order-15{
+          order: 15;
+      }
+
+      @media screen and (max-width: 600px) {
+        .order-15 {
+            /*The order to set the order of item diplay inside the container*/
+            order: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Flex container sample with horizontal direction, flex-grow, flex-default-size (please use wrapping)</h1>
+    <div class="flex-container-row flex-wrapping">
+      <div class="box-item box-item-100 bg-red flex-grow-2">1</div>
+      <div class="box-item box-item-100 bg-red">2</div>
+      <div class="box-item box-item-100 bg-red flex-grow-3">3</div>
+      <div class="box-item box-item-100 bg-red" style="flex-shrink: 4;">4</div>
+      <div class="box-item box-item-100 bg-red" style="flex-basis: 60%;">5</div>
+      <div class="box-item box-item-100 bg-red">6</div>
+    </div>
+    <h1>Flex container sample with horizontal direction with the align content setting</h1>
+    <div class="flex-container-row flex-align-content-center flex-wrapping">
+      <div class="box-item box-item-100 bg-red flex-grow-2">1</div>
+      <div class="box-item box-item-100 bg-red">2</div>
+      <div class="box-item box-item-100 bg-red flex-grow-2">3</div>
+      <div class="box-item box-item-100 bg-red">4</div>
+      <div class="box-item box-item-100 bg-red flex-grow-2">5</div>
+      <div class="box-item box-item-100 bg-red">6</div>
+      <div class="box-item box-item-100 bg-red">7</div>
+      <div class="box-item box-item-100 bg-red flex-grow-3">8</div>
+      <div class="box-item box-item-100 bg-red">9</div>
+      <div class="box-item box-item-100 bg-red">10</div>
+      <div class="box-item box-item-100 bg-red flex-grow-2">11</div>
+      <div class="box-item box-item-100 bg-red">12</div>
+      <div class="box-item box-item-100 bg-red flex-grow-3">13</div>
+      <div class="box-item box-item-100 bg-red">14</div>
+      <div class="box-item box-item-100 bg-red order-15">15</div>
+    </div>
+    <h1>Flex container sample with horizontal direction and wrapping</h1>
+    <div class="flex-container-row flex-wrapping">
+      <div class="box-item box-item-100 bg-red">1</div>
+      <div class="box-item box-item-100 bg-red">2</div>
+      <div class="box-item box-item-100 bg-red">3</div>
+      <div class="box-item box-item-100 bg-red">4</div>
+      <div class="box-item box-item-100 bg-red">5</div>
+    </div>
+    <h1>
+      Flex container sample with horizontal direction, asix end and wrapping
+    </h1>
+    <div class="flex-container-row flex-wrapping flex-axis-end">
+      <div class="box-item box-item-100 bg-red">1</div>
+      <div class="box-item box-item-100 bg-red">2</div>
+      <div class="box-item box-item-100 bg-red">3</div>
+      <div class="box-item box-item-100 bg-red">4</div>
+      <div class="box-item box-item-100 bg-red">5</div>
+    </div>
+    <h1>
+      Flex container sample with horizontal direction, asix space between and wrapping
+    </h1>
+    <div class="flex-container-row flex-wrapping flex-axis-space-between">
+      <div class="box-item box-item-100 bg-red">1</div>
+      <div class="box-item box-item-100 bg-red">2</div>
+      <div class="box-item box-item-100 bg-red">3</div>
+      <div class="box-item box-item-100 bg-red">4</div>
+      <div class="box-item box-item-100 bg-red">5</div>
+    </div>
+    <h1>
+      Flex container sample with horizontal direction, asix space around and wrapping
+    </h1>
+    <div class="flex-container-row flex-wrapping flex-axis-space-around">
+      <div class="box-item box-item-100 bg-red">1</div>
+      <div class="box-item box-item-100 bg-red">2</div>
+      <div class="box-item box-item-100 bg-red">3</div>
+      <div class="box-item box-item-100 bg-red">4</div>
+      <div class="box-item box-item-100 bg-red">5</div>
+    </div>
+    <h1>
+      Flex container sample with horizontal direction, asix center and wrapping
+    </h1>
+    <div class="flex-container-row flex-wrapping flex-axis-center">
+      <div class="box-item box-item-100 bg-red">1</div>
+      <div class="box-item box-item-100 bg-red">2</div>
+      <div class="box-item box-item-100 bg-red">3</div>
+      <div class="box-item box-item-100 bg-red">4</div>
+      <div class="box-item box-item-100 bg-red">5</div>
+    </div>
+    <h1>Flex container sample with vertiacl direction</h1>
+    <div class="flex-container-column">
+      <div class="box-item box-item-100 bg-red">1</div>
+      <div class="box-item box-item-100 bg-red">2</div>
+      <div class="box-item box-item-100 bg-red">3</div>
+      <div class="box-item box-item-100 bg-red">4</div>
+      <div class="box-item box-item-100 bg-red">5</div>
+    </div>
+    <div class="flex-container-column">
+      <div class="box-item bg-red">1</div>
+      <div class="box-item bg-red">2</div>
+      <div class="box-item bg-red">3</div>
+      <div class="box-item bg-red">4</div>
+      <div class="box-item bg-red">5</div>
+    </div>
+  </body>
 </html>

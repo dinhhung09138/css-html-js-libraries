@@ -30,10 +30,9 @@ The course from [Pluralsignt](https://app.pluralsight.com/course-player?clipId=3
 
 **Flex items** are primary objects within the flex container. The primary objects can be div, images, form, etc. It is the primary item and not the nested children of the flex items
 
-## Quickly stacking content
+## When not to use Flexbox
 
-## Adjusting layout options
-
-## Modifying specific items with the flexbox
-
-## Having content wrap and adjust
+- Complex applications (CSS grid)
+- Better suited for components
+- Control over order
+- Complex text layout
