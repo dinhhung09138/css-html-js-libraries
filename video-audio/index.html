@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            video {
+                width: 600px;
+                height: 600px;
+            }
+            body {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <!--controls property to show the controls in video when it show-->
+            <!--autoplay: this property to set the video auto play on the website-->
+            <!--loop: this property to set the loop after video finish.-->
+            <video src="media/baking.mp4" controls autoplay loop>
+                Your browser doesn't support video
+            </video>
+            <br/>
+            <audio src="media/breadsandcake.mp3" controls loop>
+                Your browser doesn't support audio
+            </audio>
+        </div>
+        <div>
+            <!--Codecs are format of actual media-->
+            <!--Containers are file-types-->
+            <!--Typically, browser needs to support both-->
+            <!--Sources are a list of media file. Browser picks media it supports. Order is not important-->
+            <!-- -->
+            <!---->
+            <video controls autoplay>
+                <source src="media/baking.webm" type="video/webm" />
+                <source src="media/baking.mp4" type="video/mp4" />
+                Your browser doesn't support video
+            </video>
+            <audio controls>
+                <source src="media/breadsandcake.wav" type="audio/wav" />
+                <source src="media/breadsandcake.mp3" type="audio/mp3" />
+                <source src="media/breadsandcake.ogg" type="audio/ogg" />
+                Your browser doesn't support video
+            </audio>
+        </div>
+        <div>
+            <!--Media url download from a server, it download as stream, and it play even the stream doesn't complete-->
+            <!--We cann't wait until the video/audio download completed and start to play. It's not make sense-->
+            <!--Adaptive streamming-->
+            <!--This is the kind of video delivery that you'll se from producers like Netflix, Hulu, Amazon, Disney Plus-->
+            <!--You can certainly use some services that support adaptive streaming as well like azure, aws. It not use for small project-->
+            <!--It usually use for compression some resolutions like 4k, Full HD, HD, SD. It need high server and stream start quickly, and the speed of connection is detected with multiple resolution and compressions-->
+        </div>
+        <div>
+            <!--Captioning-->
+            <!--Text overlays, often used for closed captioning, support multiple languages-->
+            <!--use track to -->
+            <!---->
+            <video controls autoplay>
+                <source src="media/baking.webm" type="video/webm" />
+                <source src="media/baking.mp4" type="video/mp4" />
+                <track label="English" kind="subtitles" srclang="en" default src="media/baking.vtt" />
+                <track label="Spanish" kind="subtitles" srclang="es" src="media/baking-es.vtt" />
+                Your browser doesn't support video
+            </video>
+        </div>
+        <div>
+            <video id="theVideo" controls>
+                <source src="media/baking.webm" type="video/webm" />
+                <source src="media/baking.mp4" type="video/mp4" />
+                <track label="English" kind="subtitles" srclang="en" default src="media/baking.vtt" />
+                <track label="Spanish" kind="subtitles" srclang="es" src="media/baking-es.vtt" />
+                Your browser doesn't support video
+            </video>
+            <br/>
+            <button id="playButton">Play</button>
+            <button id="pauseButton">Pause</button>
+            <button id="stopButton">Stop</button>
+            <br/>
+            Current position: <span id="currentPosition"></span>
+        </div>
+    </body>
+    <script type="text/javascript">
+        let playButton = document.getElementById('playButton');
+        let pauseButton = document.getElementById('pauseButton');
+        let stopButton = document.getElementById('stopButton');
+        let theVideo = document.getElementById('theVideo');
+        let currentPosition = document.getElementById('currentPosition');
+
+        theVideo.addEventListener('ended', function(){
+            theVideo.currentTime = 0;
+        });
+
+        theVideo.addEventListener('timeupdate', function(){
+            currentPosition.innerText = Math.floor(theVideo.currentTime);
+        });
+
+        playButton.addEventListener('click', function(){
+            theVideo.play();
+        });
+        pauseButton.addEventListener('click', function(){
+            theVideo.pause();
+        });
+        stopButton.addEventListener('click', function(){
+            theVideo.pause();
+            theVideo.currentTime = 0;
+        });
+    </script>
+</html>
