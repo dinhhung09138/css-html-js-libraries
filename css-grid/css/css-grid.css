@@ -1,0 +1,147 @@
+html {
+    height: 100%;
+}
+
+.body {
+    height: 100%;
+    /*Use to display items as a grid*/
+    display: grid;
+    /*Defines the number of columns in a grid container and their widths*/
+    /*In this configs, we are setting the first item 15em and the last item 15em, and auto min the middle item is auto*/
+    /*Grid track size
+        static value: ems, rems, pixels, ch, pt, pc... They don't change when the viewport is changed
+        Percentage: related to the viewport, and it will responsive to the viewport. You can make the layout responsive like this. 
+        auto: let the browser decide
+        fr: Fractional nit, dive up the remaining space
+        min-content: make track as small as possible to fit its content
+        max-content: make track as large as necessary to contain its content
+        minmax(minsize, maxsize): Function to specify minumun and maximum for a track. It's very usefull to set the minumum acceptable in case the viewport width is small, it will help the layout doesn't break
+        fit-content(): Fit track size to the content, but don't go above specified value
+        repeat(number of repetions, track size): to repeta a pattern of track size multiple items
+        To compare the tracking between Viewport and content responsive
+        Viewport responsive vs content responsive
+        Percentage           min-content
+        fr                   max-content
+        auto                 fit-content()
+
+    */
+    grid-template-columns: 15em auto 15em;
+    /*Defnies the number of rows in a grid container and their heights*/
+    /*We are setting for 3 row, first and last row are minimum height according on the content, the middle is auto*/
+    grid-template-rows: min-content auto min-content;
+
+    /*
+    We can use grid-template for define grid-template-rows and grid-template-columns
+    The columns and rows item seperate with a slash 
+    */
+    /* grid-template: 1fr 1fr / 1fr, 1fr; */
+
+    /*
+        Whether the grid fills rows or columns frist while assigning grid items.
+        Default is rows
+    */
+    grid-auto-flow: row;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2,10em);
+}
+
+.grid-container > div {
+    background-color: bisque;
+    border: 1px solid rgb(194, 8, 8);
+}
+
+.grid-flow-column {
+    grid-auto-flow: column;
+}
+
+.grid-flow-row {
+    grid-auto-flow: row;
+}
+
+.grid-full-rows {
+    background-color: blueviolet;
+    grid-column-start: 1;
+    grid-column-end: 13;
+    padding: 10px;
+    text-align: center;
+}
+
+.grid-auto-grow {
+    /*The size of any implicitly created rows*/
+    grid-auto-rows: 10em;
+}
+
+header, footer {
+    /*Defines the grid line a grid item should start at*/
+    grid-column-start: 1;
+    /*Defines the grid line a grid item should end at*/
+    grid-column-end: 4;
+}
+
+.grid-square {
+    display: grid;
+    grid-template: 30rem 30rem / 30rem 30rem;
+    /*auto-flow 
+    A keyworkd added to the grid shorthand property which determines the axis new tracks are added implicitly, and their size
+    grid: 10em 10em / auto-flow 10em;
+    */
+    /*Apply the size for implicitly created row*/
+    grid-auto-rows: 10rem 15rem;
+    grid-auto-columns: 5rem 3rem;
+}
+
+.grid-square > div {
+    background-color: cadetblue;
+    border: 1px solid white;
+    margin: 1px;
+}
+
+/*In Css grid it call gap, but flebox or mutilpe column layout call gutter*/
+.grid-gap {
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-gap: 20px 20px;
+}
+
+.grid-12 {
+    display: grid;
+    grid-template: repeat(12, 1fr) / auto-flow min-content;
+    grid-auto-flow: row;
+    grid-gap: 1rem;
+    background-color: burlywood;
+}
+.grid-12-header, .grid-12-footer {
+    grid-column-start: 1;
+    grid-column-end: 13;
+    background-color: darkcyan;
+}
+.grid-12-aside {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    background-color: aquamarine;
+}
+
+.grid-12-main {
+    grid-column-start: 5;
+    grid-column-end: 13;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    background-color: darkcyan;
+}
+
+.grid-position {
+    /*Define the column start and column end*/
+    grid-column: 1 / 2;
+    /*Define the row start and row end*/
+    grid-row: 3 / 6;
+    /*Define all four grid lines at once*/
+    grid-area: 1 / 2 / 3 / 6;
+    /*span keywork used to define how many rows or columns that item span*/
+
+    /*defense define how */
+
+}
