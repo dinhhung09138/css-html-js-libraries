@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Storing data in html</title>
+    </head>
+    <body>
+        <h3>Compare with cookies vs web storage</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Cookies</th>
+                    <th>Web Storage (Local/Session Storage)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Small amount of data stored (no more then 4KB)</td>
+                    <td>Larger amount of data can be stored</td>
+                </tr>
+                <tr>
+                    <td>Stored in a text files or in an SQLite database on the user's computer</td>
+                    <td>Stored in SQLite database</td>
+                </tr>
+                <tr>
+                    <td>Associated with specific web site</td>
+                    <td>Associated with specific web site</td>
+                </tr>
+                <tr>
+                    <td>Sent with all requests to the server</td>
+                    <td></td>
+                </tr>
+            <tbody>
+        </table>
+        <h3>Local Storage vs Session Storage</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Local Storage</th>
+                    <th>Session Storage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Data does not expire</td>
+                    <td>Data stored for life of the tab/browser</td>
+                </tr>
+                <tr>
+                    <td>Remove data by clearing the cache or with JS</td>
+                    <td>Data not sent to server with request</td>
+                </tr>
+                <tr>
+                    <td>Data not sent to server with request</td>
+                    <td></td>
+                </tr>
+            <tbody>
+        </table>
+        <h3>Browser storage limits</h3>
+        <p>It depends on the browser</p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="2">Desktop Storage</th>
+                    <th colspan="2">Mobile Storage</th>
+                </tr>
+                <tr>
+                    <th>Browser</th>
+                    <th>Local</th>
+                    <th>Session</th>
+                    <th>Local</th>
+                    <th>Session</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Firefox</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                </tr>
+                <tr>
+                    <td>Chrome</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                </tr>
+                <tr>
+                    <td>Edge</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                </tr>
+                <tr>
+                    <td>Safari</td>
+                    <td>1gb</td>
+                    <td>1gb</td>
+                    <td>1gb</td>
+                    <td>1gb</td>
+                </tr>
+                <tr>
+                    <td>Opera</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                    <td>10mb</td>
+                </tr>
+            <tbody>
+        </table>
+        <h3>The data can be store</h3>
+        <p>all data types have to convert to string before store into browser storage</p>
+        <h3>DEMO</h3>
+        <div class="container">
+            <h4>Local Storage</h4>
+            <div class="p-4 mb-5 storageContainer">
+                <div class="row mb-3">
+                    <div class="col-8">
+                        <input type="text" class="form-control mr-2" id="localData" />
+                    </div>
+                    <div class="col-4">
+                        <button class="btn setButton" type="button" onclick="setLocalStorage()">Set Local Data</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <button class="btn getButton" onclick="getLocalStorage()">Get Local Data</button>
+                    </div>
+                    <div class="col pl-5">
+                        <div class="getText" id="localStorageValue"></div>
+                    </div>
+                </div>
+            </div>
+            <h4>Session Storage</h4>
+            <div class="p-4 storageContainer">
+                <div class="row mb-3">
+                    <div class="col-8">
+                        <input type="text" class="form-control mr-2" id="sessionData" />
+                    </div>
+                    <div class="col-4">
+                        <button class="btn setButton" type="button" onclick="setSessionStorage()">Set Session Data</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <button class="btn getButton" onclick="getSessionStorage()">Get Session Data</button>
+                    </div>
+                    <div class="col pl-5">
+                        <div class="getText" id="sessionStorageValue"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            //#region //------------------------------------------- Set Storage
+            function setLocalStorage() {
+                let data = document.getElementById("localData").value;
+                localStorage.setItem("myLocalData", data);
+
+                document.getElementById("localData").value = ""; //-- clear out the field so we can enter a new value
+            }
+
+            function setSessionStorage() {
+                let data = document.getElementById("sessionData").value;
+                sessionStorage.setItem("mySessionData", data);
+
+                document.getElementById("sessionData").value = ""; //-- clear out the field so we can enter a new value
+            }
+            //#endregion
+            
+            //#region //------------------------------------------- Get Storage
+            function getLocalStorage() {
+                document.getElementById("localStorageValue").textContent = localStorage.getItem("myLocalData");
+            }
+
+            function getSessionStorage() {
+                document.getElementById("sessionStorageValue").textContent = sessionStorage.getItem("mySessionData");
+            }
+            //#endregion
+
+        </script>
+    </body>
+
+</html>
