@@ -113,6 +113,14 @@
         </table>
         <h3>The data can be store</h3>
         <p>all data types have to convert to string before store into browser storage</p>
+        <h3>Security issues</h3>
+        <p>Accessible by any user when they are use the same browser/website, read/change value with dev tools</p>
+        <p>Accessed by cross site scripting via JS exploitation</p>
+        <p>JS encryption not idal use for data</p>
+        <h3>Rules for Storing/Retrieving data</h3>
+        <p>always validate, encode, and escape user input</p>
+        <p>Always validate, encode, and escape saved data</p>
+        <p>Always treat data retrieved from storage as untrusted</p>
         <h3>DEMO</h3>
         <div class="container">
             <h4>Local Storage</h4>
@@ -128,9 +136,13 @@
                 <div class="row">
                     <div class="col-6">
                         <button class="btn getButton" onclick="getLocalStorage()">Get Local Data</button>
+                        <button class="btn loopButton" onclick="loopThroughLocalStorage()">Get All Local Data</button>
+                        <button class="btn removeButton" onclick="removeLocalStorage()">Remove Local Data</button>
+                        <button class="btn clearButton" onclick="clearLocalStorage()">Clear All Local Data</button>
                     </div>
                     <div class="col pl-5">
-                        <div class="getText" id="localStorageValue"></div>
+                        <div class="getText mb-3" id="localStorageValue"></div>
+                        <div class="getLoopText" id="localStorageAllData"></div>
                     </div>
                 </div>
             </div>
@@ -147,9 +159,13 @@
                 <div class="row">
                     <div class="col-6">
                         <button class="btn getButton" onclick="getSessionStorage()">Get Session Data</button>
+                        <button class="btn loopButton" onclick="loopThroughSessionStorage()">Get All Session Data</button>
+                        <button class="btn removeButton" onclick="removeSessionStorage()">Remove Session Data</button>
+                        <button class="btn clearButton" onclick="clearSessionStorage()">Clear All Session Data</button>
                     </div>
                     <div class="col pl-5">
-                        <div class="getText" id="sessionStorageValue"></div>
+                        <div class="getText mb-3" id="sessionStorageValue"></div>
+                        <div class="getLoopText" id="sessionStorageAllData"></div>
                     </div>
                 </div>
             </div>
@@ -181,6 +197,96 @@
             }
             //#endregion
 
+            //#region //------------------------------------------- Loop Through All Storage
+            function loopThroughLocalStorage() {
+                let dataHtml = "";
+
+                for (var i = 0; i < localStorage.length; i++) {
+                    dataHtml += "<p>" + localStorage.getItem(localStorage.key(i)) + "</p>";
+                }
+
+                document.getElementById("localStorageAllData").innerHTML = dataHtml;
+            }
+
+            function loopThroughSessionStorage() {
+                let dataHtml = "";
+
+                for (var i = 0; i < sessionStorage.length; i++) {
+                    dataHtml += "<p>" + sessionStorage.getItem(sessionStorage.key(i)) + "</p>";
+                }
+
+                document.getElementById("sessionStorageAllData").innerHTML = dataHtml;
+            }
+            //#endregion
+            
+            //#region //------------------------------------------- Remove Storage
+            function removeLocalStorage() {
+                localStorage.removeItem("myLocalData");
+
+                getLocalStorage();
+                loopThroughLocalStorage();
+            }
+
+            function removeSessionStorage() {
+                sessionStorage.removeItem("mySessionData");
+
+                getSessionStorage();
+                loopThroughSessionStorage();
+            }
+            //#endregion
+
+            //#region //------------------------------------------- Clear Storage
+            function clearLocalStorage() {
+                localStorage.clear();
+
+                getLocalStorage();
+                loopThroughLocalStorage();
+            }
+
+            function clearSessionStorage() {
+                sessionStorage.clear();
+
+                getSessionStorage();
+                loopThroughSessionStorage();
+            }
+            //#endregion
+
+            //#region //------------------------------------------- Set JSON Data
+            function setJsonLocalStorage() {
+                let simpleJson = {
+                    fruits: [
+                        { name: "Blueberries", color: "blue" },
+                        { name: "Kiwi", color: "green" },
+                        { name: "Lemon", color: "yellow" },
+                        { name: "Strawberries", color: "red" },
+                        { name: "Mango", color: "yellow" },
+                        { name: "Apple", colore: "red" },
+                    ],
+                    vegetables : [
+                        { name: "Cucumber", color: "gree" },
+                        { name: "Carrot", color: "orange" },
+                        { name: "Cauliflower", color: "white" },
+                        { name: "Potato", color: "brown" },
+                    ]
+                };
+
+                console.log(simpleJson); 
+
+                localStorage.setItem("fruitsAndVeggies", JSON.stringify(simpleJson));
+            }
+            //#endregion
+
+            //#region //------------------------------------------- Get JSON Data
+            function getJsonLocalStorage() {
+                let fromStorage = localStorage.getItem("fruitsAndVeggies");
+                let backToJson = JSON.parse(fromStorage);
+                
+                console.log(fromStorage);
+                console.log(backToJson); 
+
+                document.getElementById("localStorageValue").textContent = backToJson.fruits[4].name + ": " + backToJson.fruits[4].color;
+            }
+            //#endregion
         </script>
     </body>
 
