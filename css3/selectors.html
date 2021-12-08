@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" >
+        <title>Selector</title>
+        <link rel="stylesheet" href="selectors.css" />
+    </head>
+    <body>
+        <b>Basic selectors, general selectors</b>
+        <ol>
+            <li class="my-class">Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>
+                <ul>
+                    <li>
+                        Item a
+                    </li>
+                    <li>Item b</li>
+                    <li>Item c</li>
+                </ul>
+            </li>
+            <li class="my-class">Item 4 (my-class)</li>
+            <li>Item 5</li>
+            <li>Item 6</li>
+            <li>
+                Item 7
+            </li>
+        </ol>
+        <b>Attribute selectors</b>
+        <ol>
+            <li class="my-class" title="unicorns eat rainbows">Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>
+                <ul>
+                    <li>
+                        Item a
+                        <a href="http:/site.com/file.pdf" title="external pdf file">pdf</a>
+                    </li>
+                    <li>Item b</li>
+                    <li>Item c</li>
+                </ul>
+            </li>
+            <li class="my-class">Item 4 (my-class)</li>
+            <li>Item 5</li>
+            <li>Item 6</li>
+            <li title="unicorn ate a rainbow">
+                Item 7
+                <a href="pdf.file" title="internal file">pdf</a>
+            </li>
+        </ol>
+        <b>UI Pseudo classes</b><br/>
+        <input type="checkbox" /><label>Check and Uncheck Me</label><br/>
+        <input type="checkbox" /><label>Check and Uncheck me too!</label><br/>
+        <input type="number" min="5" max="7" /><label>Number between 5 and 7</label>
+        <b>Structural selector</b><br/>
+        <div class="structural-selector">
+            <div>
+                <h3>This is a H3</h3>
+                <p>
+                    Target elements on the page based on their relationships to other elements in the DOM
+                    Updates dynamically if page updates
+                    Reduced need for extra markup, clases and IDs
+                </p>
+            </div>
+            <div>
+                <h3>This is a H3</h3>
+                <p>
+                    Target elements on the page based on their relationships to other elements in the DOM
+                    Updates dynamically if page updates
+                    Reduced need for extra markup, clases and IDs
+                </p>
+            </div>
+            <div>
+                <h3>This is a H3</h3>
+                <p>
+                    Target elements on the page based on their relationships to other elements in the DOM
+                    Updates dynamically if page updates
+                    Reduced need for extra markup, clases and IDs
+                </p>
+            </div>
+        </div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Row 1</td>
+                </tr>
+                <tr>
+                    <td>Row 2</td>
+                </tr>
+                <tr>
+                    <td>Row 3</td>
+                </tr>
+                <tr>
+                    <td>Row 4</td>
+                </tr>
+                <tr>
+                    <td>Row 5</td>
+                </tr>
+                <tr>
+                    <td>Row 6</td>
+                </tr>
+                <tr>
+                    <td>Row 7</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

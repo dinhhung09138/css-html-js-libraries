@@ -1,0 +1,47 @@
+body {
+    font-size: 20px;;
+}
+ol li { color: green;}
+ol > li {color: purple;}
+li { color: yellow;}
+li.my-class {color: red;}
+li.my-class ~ li {color: blue; font-weight: bold;}
+li.my-class + li {color: orange;}
+li[title] { color: cyan; font-weight: bold;}
+a[href^=http] {text-decoration: overline; font-weight: bold; background-color: blueviolet;}
+
+input[type=checkbox]:checked + label {
+    color: red;
+}
+
+input[type=number]:valid { border: 1px solid green; }
+input[type=number]:invalid { border: 1px solid red; }
+input[type=number]:required { border-width: 5px; }
+input[type=number]:optional { border-width: 10px; }
+input[type=number]:out-of-range { background-color: pink; }
+input[type=number]:in-range { background-color: lightgreen; }
+
+.structural-selector > div:first-child {
+    color: #b00; font-style:italic; text-decoration: underline;
+}
+tr:first-child,
+tr:last-child {
+    font-weight: bold;
+}
+tr:first-of-type,
+tr:last-of-type {
+    text-decoration: line-through;
+}
+tr:nth-child(even) {
+    background-color: #ccc;
+}
+tr:nth-child(odd) {
+    background-color: red;
+}
+tr:nth-child(3) {
+    color: #ccc;
+}
+/*every position chia het cho 4*/
+tr:nth-of-type(4n) {
+    color: #c61800;
+}
